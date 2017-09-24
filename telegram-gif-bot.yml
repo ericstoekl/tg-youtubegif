@@ -1,0 +1,19 @@
+provider:
+  name: faas
+  gateway: http://localhost:8080
+
+functions:
+  telegram-gif-bot:
+    lang: node
+    handler: ./telegram-gif-bot
+    image: ems5311/telegram-gif-bot:latest
+
+  gif-maker:
+    lang: Dockerfile
+    handler: ./gif-maker
+    image: ems5311/gif-maker:latest
+
+  youtube-dl:
+    lang: Dockerfile
+    handler: ./youtube-dl
+    image: ems5311/youtube-dl:latest
