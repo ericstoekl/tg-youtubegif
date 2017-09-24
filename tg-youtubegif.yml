@@ -22,7 +22,7 @@ functions:
   youtube-dl:
     lang: Dockerfile
     handler: ./youtube-dl
-    image: ems5311/youtube-dl:latest
+    image: ems5311/youtube-dl:0.1
     environment:
       read_timeout: 65
       write_timeout: 65

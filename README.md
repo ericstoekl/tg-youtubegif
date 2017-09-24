@@ -3,14 +3,18 @@
 
 ### Instructions:
 
-Create an EC2 instance on AWS and run the following commands to set up OpenFaaS
+Create an EC2 instance using the [Ubuntu AMI](https://aws.amazon.com/marketplace/pp/B01JBL2M0O) on AWS. Make sure to have port 8080 open in the security group, as OpenFaaS listens on port 8080. Run the following commands to set up OpenFaaS:
+
+```
+# SSH into your machine:
+$ ssh -i KeyPair.pem ubuntu@<your EC2 instance Public DNS>
+```
 
 ```
 # Setup Docker
-~ $ sudo yum update -y
-~ $ sudo yum install -y docker git
-~ $ sudo service docker start
-~ $ sudo usermod -a -G docker ec2-user
+~ $ sudo apt-get update
+~ $ curl -sSL https://get.docker.com/ | sudo sh
+~ $ sudo usermod -a -G docker ubuntu
 ```
 
 ```
@@ -18,10 +22,14 @@ Create an EC2 instance on AWS and run the following commands to set up OpenFaaS
 ```
 
 ```
+# Initialize docker swarm
+~ $ docker swarm init
+```
+
+```
 # Deploy OpenFaaS on the EC2 instance
 ~ $ git clone https://github.com/openfaas/faas
 ~ $ cd faas
-~/faas $ ./build.sh
 ~/faas $ ./deploy_stack.sh
 ```
 
@@ -33,6 +41,7 @@ Create an EC2 instance on AWS and run the following commands to set up OpenFaaS
 
 ```
 # Deploy the tg-youtubegif function
+~ $ git clone https://github.com/ericstoekl/tg-youtubegif
 ~ $ cd tg-youtubegif
 ~/tg-youtubegif $ faas-cli deploy -f tg-youtubegif.yml
 ```
