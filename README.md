@@ -3,9 +3,10 @@
 
 ### Instructions:
 
-Get OpenFaaS with instructions @ https://github.com/alexellis/faas/blob/master/guide/deployment_swarm.md
+Create an EC2 instance on AWS and run the following commands to set up OpenFaaS
 
 ```
+# Setup Docker
 ~ $ sudo yum update -y
 ~ $ sudo yum install -y docker
 ~ $ sudo service docker start
@@ -13,7 +14,11 @@ Get OpenFaaS with instructions @ https://github.com/alexellis/faas/blob/master/g
 ```
 
 ```
-# Log out and log back in
+# Log out and log back in (You are using SSH, so cut the connection and re-connect)
+```
+
+```
+# Deploy OpenFaaS on the EC2 instance
 ~ $ git clone https://github.com/openfaas/faas
 ~ $ cd faas
 ~/faas $ ./build.sh
@@ -33,14 +38,7 @@ Get OpenFaaS with instructions @ https://github.com/alexellis/faas/blob/master/g
 ~/tg-youtubegif $ faas-cli deploy -f tg-youtubegif.yml
 ```
 
-
-Deploy the `tg-youtubegif` function:
-
-```
-$ faas-cli --deploy -f tg-youtubegif.yml
-```
-
-Now try it out:
+### Try it out:
 
 ```
 $ curl localhost:8080/function/youtube-dl \
