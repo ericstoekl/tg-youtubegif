@@ -8,7 +8,7 @@ Create an EC2 instance on AWS and run the following commands to set up OpenFaaS
 ```
 # Setup Docker
 ~ $ sudo yum update -y
-~ $ sudo yum install -y docker
+~ $ sudo yum install -y docker git
 ~ $ sudo service docker start
 ~ $ sudo usermod -a -G docker ec2-user
 ```
@@ -33,7 +33,6 @@ Create an EC2 instance on AWS and run the following commands to set up OpenFaaS
 
 ```
 # Deploy the tg-youtubegif function
-~ $ # Change directory back to tg-youtubegif/
 ~ $ cd tg-youtubegif
 ~/tg-youtubegif $ faas-cli deploy -f tg-youtubegif.yml
 ```
