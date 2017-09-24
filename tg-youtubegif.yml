@@ -7,13 +7,22 @@ functions:
     lang: node
     handler: ./telegram-gif-bot
     image: ems5311/telegram-gif-bot:latest
+    environment:
+      read_timeout: 65
+      write_timeout: 65
 
   gif-maker:
     lang: Dockerfile
     handler: ./gif-maker
     image: ems5311/gif-maker:latest
+    environment:
+      read_timeout: 65
+      write_timeout: 65
 
   youtube-dl:
     lang: Dockerfile
     handler: ./youtube-dl
     image: ems5311/youtube-dl:latest
+    environment:
+      read_timeout: 65
+      write_timeout: 65
