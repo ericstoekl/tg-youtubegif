@@ -16,7 +16,7 @@ module.exports = function(context, callback) {
 
     const options = {
       method: 'POST',
-      uri: 'http://gateway:8080/function/youtubedl',
+      uri: 'http://gateway:8080/function/youtube-dl',
       body: text,
       json: false,
       encoding: null
