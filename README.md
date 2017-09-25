@@ -30,6 +30,29 @@ $ ssh -i KeyPair.pem ubuntu@<your EC2 instance Public DNS>
 # Deploy OpenFaaS on the EC2 instance
 ~ $ git clone https://github.com/openfaas/faas
 ~ $ cd faas
+```
+
+```
+# Edit docker-compose.yml to add the 'read_timeout: 65' and 'write_timeout: 65' environment variables to the gateway
+# Once done, it should look like:
+~/faas-cli $ git diff docker-compose.yml
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 9d91cff..cfcde24 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -10,6 +10,8 @@ services:
+             - functions
+         environment:
+             dnsrr: "true"  # Temporarily use dnsrr in place of VIP while issue persists on PWD
++            read_timeout: 65    # seconds
++            write_timeout: 65   # seconds
+         deploy:
+             placement:
+                 constraints:
+```
+
+```
+# Finally, deploy the stack:
 ~/faas $ ./deploy_stack.sh
 ```
 
