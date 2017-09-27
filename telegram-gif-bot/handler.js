@@ -1,5 +1,7 @@
 "use strict"
 
+const FaaS = require('openfaas')
+const faas = FaaS('http://gateway:8080')
 var TelegramBot = require('node-telegram-bot-api');
 
 var telegramBotToken = ''; // Add your own here
@@ -14,6 +16,27 @@ module.exports = function(context, callback) {
     var text = fullContext.message.text;
     console.log("created vars");
 
+    faas.invoke(
+        'youtube-dl', // function name
+        text // data to send to function
+    )
+    .then(x => {
+      telegramBot.sendMessage(chatId, "Got the video file...");
+
+      faas.invoke(
+        'gif-maker',
+        x.body
+      )
+      .then( y => {
+        telegramBot.sendMessage(chatId, "Got the gif file...");
+        telegramBot.sendDocument(chatId, y.body);
+      })
+      .catch(err => console.log(err));
+
+    })
+    .catch(err => console.log(err));
+
+/*
     const options = {
       method: 'POST',
       uri: 'http://gateway:8080/function/youtube-dl',
@@ -48,7 +71,8 @@ module.exports = function(context, callback) {
       );
 
     });
+*/
 
 
-    callback(undefined, {status: err});
+    callback(undefined, {status: true});
 }
