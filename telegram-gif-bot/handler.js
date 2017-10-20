@@ -40,43 +40,5 @@ module.exports = function(context, callback) {
     })
     .catch(err => console.log(err));
 
-/*
-    const options = {
-      method: 'POST',
-      uri: 'http://gateway:8080/function/youtube-dl',
-      body: text,
-      json: false,
-      encoding: null
-    }
-    console.log("Created post req");
-
-    request.post(options, function (error, response, body) {
-      var bodyText = '' + body;
-      bodyText = bodyText.substring(0, 55)
-
-      console.log("error: " + error + ", bodyText: " + bodyText);
-
-      telegramBot.sendMessage(chatId, "Got the video file...");
-
-      request.post({
-                        method: 'POST',
-                        uri: 'http://gateway:8080/function/gif-maker',
-                        body: body,
-                        json: false,
-                        encoding: null
-                   }, function(error, response, body) {
-                        if (!error) {
-                          telegramBot.sendMessage(chatId, "Got the gif file...");
-                          telegramBot.sendDocument(chatId, body);
-                        } else {
-                          telegramBot.sendMessage(chatId, "error in gif stage... " + err);
-                        }
-                      } 
-      );
-
-    });
-*/
-
-
     callback(undefined, {status: true});
 }
