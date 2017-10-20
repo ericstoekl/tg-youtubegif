@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "node-telegram-bot-api": "^0.28.0",
-    "openfaas": "0.0.3",
+    "openfaas": "0.0.4",
     "request": "^2.82.0"
   }
 }

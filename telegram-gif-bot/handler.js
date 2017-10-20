@@ -18,14 +18,18 @@ module.exports = function(context, callback) {
 
     faas.invoke(
         'youtube-dl', // function name
-        text // data to send to function
+        text, // data to send to function
+        false,
+        true
     )
     .then(x => {
       telegramBot.sendMessage(chatId, "Got the video file...");
 
       faas.invoke(
         'gif-maker',
-        x.body
+        x.body,
+        false,
+        true
       )
       .then( y => {
         telegramBot.sendMessage(chatId, "Got the gif file...");
