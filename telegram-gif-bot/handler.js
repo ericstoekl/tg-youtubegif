@@ -39,7 +39,7 @@ module.exports = function(context, callback) {
 
       faas.invoke(
         'gif-maker',
-        gifObj,
+        JSON.stringify(gifObj),
         false,
         true
       )

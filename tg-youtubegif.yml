@@ -11,7 +11,7 @@ functions:
   gif-maker:
     lang: Dockerfile
     handler: ./gif-maker
-    image: ems5311/gif-maker:latest
+    image: ems5311/gif-maker:0.1
 
   youtube-dl:
     lang: Dockerfile
