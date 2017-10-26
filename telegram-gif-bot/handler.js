@@ -4,11 +4,8 @@ const FaaS = require('openfaas')
 const faas = FaaS('http://gateway:8080')
 var TelegramBot = require('node-telegram-bot-api');
 
-var telegramBotToken = env.BOT_TOKEN; // Add your own here
+var telegramBotToken = process.env.BOT_TOKEN;
 var telegramBot = new TelegramBot(telegramBotToken, {polling: false});    
-
-var request = require('request');
-
 
 module.exports = function(context, callback) {
     var fullContext = JSON.parse(context);
