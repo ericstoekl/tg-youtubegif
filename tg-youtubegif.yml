@@ -6,7 +6,7 @@ functions:
   telegram-gif-bot:
     lang: node
     handler: ./telegram-gif-bot
-    image: ems5311/telegram-gif-bot:0.1
+    image: ems5311/telegram-gif-bot:arm_1
 
   gif-maker:
     lang: Dockerfile
