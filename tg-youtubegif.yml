@@ -11,9 +11,15 @@ functions:
   gif-maker:
     lang: Dockerfile
     handler: ./gif-maker
-    image: ems5311/gif-maker:arm
+    image: ems5311/gif-maker:arm_1
+    environment:
+      read_timeout: 300
+      write_timeout: 300
 
   youtube-dl:
     lang: Dockerfile
     handler: ./youtube-dl
-    image: ems5311/youtube-dl:arm
+    image: ems5311/youtube-dl:arm_1
+    environment:
+      read_timeout: 60
+      write_timeout: 60
